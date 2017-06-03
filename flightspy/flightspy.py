@@ -31,7 +31,8 @@ class FlightsPy(object):
                     "childCount": 0,
                     "seniorCount": 0
                     },
-                "solutions": 1,
+                "solutions": params['solutions'],
+                "saleCountry": "US",
                 "refundable": 'false'
                 }
             }, headers = headers)
@@ -72,13 +73,3 @@ class FlightsPy(object):
                 self.print_trip(trip)
         else:
             print("No data yet")
-
-if __name__ == "__main__":
-    API_KEY =   '<<INSERT API KEY HERE>>'
-    access = FlightsPy(API_KEY)
-    access.grab(params={
-        'origin': 'KIN',
-        'destination': 'JFK',
-        'date': '2017-05-31'
-        })
-    access.print_result()
