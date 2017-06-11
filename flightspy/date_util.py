@@ -4,6 +4,10 @@ def daterange(start_date, end_date):
     for n in range(int ((end_date - start_date).days)):
         yield start_date + timedelta(n)
 
+def daterange_day(start_date, days):
+    for n in range(int (days)):
+        yield start_date + timedelta(n)
+
 #TODO: Either leave as is or add to run function
 start_date = date(2017, 6, 3)
 end_date = date(2017, 6, 30)
