@@ -9,16 +9,6 @@ access = FlightsPy(API_KEY)
 from sys import argv
 
 #TODO: Get run.py to run up to 50 days beyond a date and then state the cheapest Ticket Price of the day
-"""
-access.grab(params={
-    'origin': 'JFK',
-    'destination': 'KIN',
-    'date': '2017-06-03',
-    'solutions': 3
-    })
-
-access.print_result()
-"""
 
 # The following is a test case for use
 params = {}
@@ -37,13 +27,18 @@ def day_range():
         access.print_result()
 
 def set_dates():
-    for date in daterange_day(today, end_date):
+    for date in daterange(today, end_date):
         date = date.strftime('%Y-%m-%d') # converts date to a form that QPX can recognize
         params['date'] = date
         access.grab(params) #TODO: improve this so we won't have to call QPX API each time
+        access.print_result()
 
 if __name__ == "__main__":
     script, instruction = argv
-    if instruction = "dates":
-        pass
+    if instruction == "dates":
+        set_dates()
+    elif instruction == "range":
+        day_range()
+    else:
+        print("Please choose an instruction, either \'dates\' and \'range\'")
     # TODO: continue building this out
