@@ -3,7 +3,10 @@ from flightspy import FlightsPy
 from date_util import daterange, daterange_day  # converts start and end date into a range of dates, produces a generator
 from datetime import datetime
 
-API_KEY = os.environ.get('API_KEY')
+if os.environ.get('API_KEY'):
+    API_KEY = os.environ.get('API_KEY')
+else:
+    from secrets import API_KEY
 access = FlightsPy(API_KEY)
 
 from sys import argv
@@ -16,11 +19,13 @@ params['origin'] = 'KIN'
 params['destination'] = 'JFK'
 params['solutions'] = 1
 
-today = datetime(2017,6,30) # If it is too late in the day QPX will return an error, can/maybe should be renamed start_date
+
+#TODO: Create error that explains that if start date is too late reports as too late
+today = datetime(2017,7,3) # If it is too late in the day QPX will return an error, can/maybe should be renamed start_date
 end_date = datetime(2017, 7, 30) # some fixed date in the future TODO: have this be a set interval away from the initial start_date
 
 def day_range():
-    for date in daterange_day(today, 30):
+    for date in daterange_day(today, 50):
         date = date.strftime('%Y-%m-%d') # converts date to a form that QPX can recognize
         params['date'] = date
         access.grab(params) #TODO: improve this so we won't have to call QPX API each time
