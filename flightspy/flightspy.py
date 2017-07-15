@@ -65,7 +65,9 @@ class FlightsPy(object):
                 print("     %s%s %s %s %s %s  %s mileage"% (flight_carrier, flight_number, flight_origin, flight_departureTime, flight_destination, flight_arrivalTime, flight_mileage))
 
     def trip_to_database(self, trip):
-        pass
+        Slice = 0
+        for s in trip["slice"]:
+            pass
         #TODO: Populate this function so that data is saved in a database
         # How do I make this function so I can apply DRY, don't want to repeat flight_number etc definitions above (maybe breakdown print_trip into another function?)
 

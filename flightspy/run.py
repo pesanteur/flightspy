@@ -21,7 +21,7 @@ params['solutions'] = 1
 
 
 #TODO: Create error that explains that if start date is too late reports as too late
-today = datetime(2017,7,3) # If it is too late in the day QPX will return an error, can/maybe should be renamed start_date
+today = datetime(2017,7,13) # If it is too late in the day QPX will return an error, can/maybe should be renamed start_date
 end_date = datetime(2017, 7, 30) # some fixed date in the future TODO: have this be a set interval away from the initial start_date
 
 def day_range():
